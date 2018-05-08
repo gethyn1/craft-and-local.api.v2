@@ -1,13 +1,14 @@
-export const getProducers = (Producer, query, limit) =>
+export const getProducers = (Producer, query, limit = 30, maxLimit = 50) =>
   new Promise((resolve, reject) => {
-    let numberOfProducersToGet = limit
+    let numberOfProducersToGet = limit < maxLimit ? limit : maxLimit
 
     // Create an empty filters object for querying the database.
     const filters = {}
 
     if (query.hasOwnProperty('limit')) {
       // Set a min distance to query from.
-      numberOfProducersToGet = parseInt(query.limit, 10)
+      const queryLimit = parseInt(query.limit, 10)
+      numberOfProducersToGet = queryLimit < maxLimit ? queryLimit : maxLimit
     }
 
     if (query.hasOwnProperty('latlng')) {

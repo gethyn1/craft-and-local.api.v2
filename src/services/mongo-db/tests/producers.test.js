@@ -83,4 +83,9 @@ describe('Mongo DB service > producers', () => {
     getProducers(Producer, {})
     expect(populate.mock.calls[0][0]).toEqual('categories')
   })
+
+  it('should limit the number of reducers by the maximum limit', () => {
+    getProducers(Producer, { limit: 43 }, 2, 10)
+    expect(limit.mock.calls[0][0]).toBe(10)
+  })
 })
