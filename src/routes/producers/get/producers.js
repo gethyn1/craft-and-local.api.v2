@@ -1,4 +1,4 @@
-import { PRODUCER_LIMIT } from './constants'
+import { PRODUCER_LIMIT, MAX_PRODUCER_LIMIT } from './constants'
 
 export const getProducers = (mongoDBService) => (req, res) => {
   mongoDBService.getProducers(req.query, PRODUCER_LIMIT, MAX_PRODUCER_LIMIT)
