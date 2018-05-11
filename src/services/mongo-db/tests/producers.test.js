@@ -12,12 +12,12 @@ const Producer = {
   exec,
 }
 
-describe('Mongo DB service > producers', () => {
+describe('Mongo DB service > GET > producers', () => {
   beforeEach(() => {
-      find.mockClear()
-      limit.mockClear()
-      populate.mockClear()
-      exec.mockClear()
+    find.mockClear()
+    limit.mockClear()
+    populate.mockClear()
+    exec.mockClear()
   })
 
   it('should limit number of producers returned', () => {
