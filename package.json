@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Craft & Local API V2",
   "main": "index.js",
-  "license": "MIT",
+  "license": "UNLICENSED",
+  "private": true,
   "engines": {
     "node": "8.9.4",
     "yarn": "1.6.0"
