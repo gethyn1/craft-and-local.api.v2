@@ -36,9 +36,9 @@ export const getProducers = (Producer, query, limit = 30, maxLimit = 50) =>
       }
     }
 
-    if (query.hasOwnProperty('categories_like')) {
+    if (query.hasOwnProperty('categories')) {
       // Find producers in category.
-      filters.categories = query.categories_like
+      filters.categories = query.categories
     }
 
     Producer
