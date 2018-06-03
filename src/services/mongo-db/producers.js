@@ -48,7 +48,8 @@ export const getProducers = (Producer, query, limit = 30, maxLimit = 50) =>
       .exec((err, results) => {
         if (err) {
           reject({
-            status: 'error',
+            statusCode: 400,
+            status: 'bad request',
             data: {
               title: err,
             },
@@ -56,6 +57,7 @@ export const getProducers = (Producer, query, limit = 30, maxLimit = 50) =>
         }
 
         resolve({
+          statusCode: 200,
           status: 'success',
           data: {
             producers: results,

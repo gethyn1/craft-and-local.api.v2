@@ -7,6 +7,7 @@ export const getProducer = (Producer, user_id) =>
       .exec((err, results) => {
         if (err) {
           reject({
+            statusCode: 400,
             status: 'error',
             data: {
               title: err,
@@ -17,16 +18,15 @@ export const getProducer = (Producer, user_id) =>
         if (!results) {
           reject({
             statusCode: 404,
+            status: 'not found',
             data: {
-              status: 'error',
-              data: {
-                title: 'No producer found with requested ID',
-              },
-            }
+              title: 'No producer found with requested ID',
+            },
           })
         }
 
         resolve({
+          statusCode: 200,
           status: 'success',
           data: {
             producer: results,

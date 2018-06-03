@@ -5,6 +5,7 @@ export const getCategories = (Category) =>
       .exec((err, results) => {
         if (err) {
           reject({
+            statusCode: 400,
             status: 'error',
             data: {
               title: err,
@@ -13,6 +14,7 @@ export const getCategories = (Category) =>
         }
 
         resolve({
+          statusCode: 200,
           status: 'success',
           data: {
             categories: results,
