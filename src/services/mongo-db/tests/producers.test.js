@@ -70,7 +70,7 @@ describe('Mongo DB service > GET > producers', () => {
   })
 
   it('should get producers by category', () => {
-    getProducers(Producer, { categories_like: 'category' })
+    getProducers(Producer, { categories: 'category' })
 
     const expected = {
       categories: 'category',
