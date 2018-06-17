@@ -20,6 +20,9 @@ const { WEB_PORT, isProd, JWT_SECRET, CORS_WEB_APP_ORIGIN, DEBUG } = config
 const app = express()
 const http = Server(app)
 
+// Express security with helmet module
+app.use(helmet())
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -27,9 +30,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 if (!isProd && DEBUG) {
   app.use(morgan('combined'))
 }
-
-// Express security with helmet module
-app.use(helmet())
 
 // Rate limiting
 if (isProd) {
