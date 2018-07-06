@@ -1,9 +1,9 @@
 import Producer from '../../models/producer'
 import Category from '../../models/category'
-import Locality from '../../models/locality'
+import Location from '../../models/location'
 
 export {
   Producer,
   Category,
-  Locality,
+  Location,
 }

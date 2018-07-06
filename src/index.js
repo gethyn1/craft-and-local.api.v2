@@ -11,9 +11,10 @@ import RateLimit from 'express-rate-limit'
 import { Server } from 'http'
 import './db'
 import config from './config'
-import producersRoutes from './routes/producers'
+import producerRoutes from './routes/producers'
 import categoryRoutes from './routes/categories'
 import avatarsRoutes from './routes/avatars'
+import locationRoutes from './routes/locations'
 // import robotsTxtRoute from '../routes/robots'
 
 const { WEB_PORT, IS_PROD, JWT_SECRET, CORS_WEB_APP_ORIGIN, DEBUG } = config
@@ -53,9 +54,10 @@ app.all('*', function(req, res, next) {
   next()
 })
 
-producersRoutes(app, config)
+producerRoutes(app, config)
 categoryRoutes(app, config)
 avatarsRoutes(app, config)
+locationRoutes(app, config)
 
 http.listen(WEB_PORT, () => {
   // eslint-disable-next-line no-console
