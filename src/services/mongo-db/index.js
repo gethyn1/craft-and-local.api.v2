@@ -6,6 +6,7 @@ import { updateProducer } from './update-producer'
 import { updateProducerAvatar } from './update-producer-avatar'
 import { getCategories } from './categories'
 import { getLocations } from './locations'
+import { getLocation } from './location'
 
 const createMongoDBService = () => {
   return {
@@ -29,6 +30,9 @@ const createMongoDBService = () => {
     },
     getLocations(query, limit) {
       return getLocations(Location, query, limit)
+    },
+    getLocation(_id) {
+      return getLocation(Location, _id)
     }
   }
 }
