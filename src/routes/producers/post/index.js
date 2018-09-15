@@ -1,1 +1,1 @@
-export { createProducer } from './producer'
+export { createProducer, updateProducer } from './producer'
