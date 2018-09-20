@@ -33,11 +33,7 @@ export const updateProducerAvatar = (Producer, upload, file, userId) =>
       }
 
       // If field already has a value then delete current image
-      // const currentFile = producer[file.fieldname]
-      //
-      // if (currentFile) {
-      //   deleteImage(currentFile)
-      // }
+      const previousFileKey = producer[file.fieldname]
 
       // Update doc with new image path
       producer[file.fieldname] = upload.data.url
@@ -58,6 +54,7 @@ export const updateProducerAvatar = (Producer, upload, file, userId) =>
           status: 'success',
           data: {
             url: upload.data.url,
+            previousFileKey,
           },
         })
       })

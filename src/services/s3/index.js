@@ -1,5 +1,6 @@
 import AWS from 'aws-sdk'
 import { upload } from './upload'
+import { deleteFile } from './delete-file'
 
 const createS3Client = (config) => {
   const { S3_KEY, S3_SECRET, S3_BUCKET, S3_REGION } = config
@@ -17,7 +18,8 @@ const createS3Service = (config) => {
   const s3Client = createS3Client(config)
 
   return {
-    upload: (file) => upload(s3Client, file)
+    upload: (file) => upload(s3Client, file),
+    deleteFile: (key) => deleteFile(s3Client, key),
   }
 }
 
