@@ -13,6 +13,7 @@ import './db'
 import config from './config'
 import producersRoutes from './routes/producers'
 import categoryRoutes from './routes/categories'
+import avatarsRoutes from './routes/avatars'
 // import robotsTxtRoute from '../routes/robots'
 
 const { WEB_PORT, isProd, JWT_SECRET, CORS_WEB_APP_ORIGIN, DEBUG } = config
@@ -54,6 +55,7 @@ app.all('*', function(req, res, next) {
 
 producersRoutes(app, config)
 categoryRoutes(app, config)
+avatarsRoutes(app, config)
 
 http.listen(WEB_PORT, () => {
   // eslint-disable-next-line no-console

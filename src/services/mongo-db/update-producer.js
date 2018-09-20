@@ -2,7 +2,6 @@ import { setProducerFields } from './set-producer-fields'
 
 export const updateProducer = (Producer, user_id, producer) =>
   new Promise((resolve, reject) => {
-    console.log(user_id, producer)
     if (!user_id || user_id === 'undefined') {
       return reject({
         statusCode: 400,
