@@ -1,4 +1,5 @@
 import multer from 'multer'
+import { IS_PROD } from '../../config'
 import { uploadAvatar } from './post'
 import createMongoDBService from '../../services/mongo-db'
 import createS3Service from '../../services/s3'
@@ -13,7 +14,9 @@ const avatarsRoutesFactory = (app, config) => {
     limits: { fileSize: 52428800 },
   })
 
-  app.post('/avatars', upload.single('avatar'), uploadAvatar(mongoDBService, s3Service))
+  if (!IS_PROD) {
+    app.post('/avatars', upload.single('avatar'), uploadAvatar(mongoDBService, s3Service))
+  }
 }
 
 export default avatarsRoutesFactory

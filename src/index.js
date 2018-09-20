@@ -16,7 +16,7 @@ import categoryRoutes from './routes/categories'
 import avatarsRoutes from './routes/avatars'
 // import robotsTxtRoute from '../routes/robots'
 
-const { WEB_PORT, isProd, JWT_SECRET, CORS_WEB_APP_ORIGIN, DEBUG } = config
+const { WEB_PORT, IS_PROD, JWT_SECRET, CORS_WEB_APP_ORIGIN, DEBUG } = config
 
 const app = express()
 const http = Server(app)
@@ -28,12 +28,12 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // Debugging with morgan
-if (!isProd && DEBUG) {
+if (!IS_PROD && DEBUG) {
   app.use(morgan('combined'))
 }
 
 // Rate limiting
-if (isProd) {
+if (IS_PROD) {
   app.enable('trust proxy')
 
   const limiter = new RateLimit({
@@ -59,6 +59,6 @@ avatarsRoutes(app, config)
 
 http.listen(WEB_PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`Server running on port ${String(WEB_PORT)} ${isProd ? '(production)' :
+  console.log(`Server running on port ${String(WEB_PORT)} ${IS_PROD ? '(production)' :
     '(development)'}.`)
 })
