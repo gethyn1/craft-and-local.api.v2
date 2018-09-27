@@ -1,4 +1,6 @@
+import { IS_PROD } from '../../config'
 import { getProducers, getProducer } from './get'
+import { createProducer, updateProducer } from './post'
 import createMongoDBService from '../../services/mongo-db'
 
 const producersRoutesFactory = (app, config) => {
@@ -6,6 +8,11 @@ const producersRoutesFactory = (app, config) => {
 
   app.get('/producers', getProducers(mongoDBService))
   app.get('/producers/:userId', getProducer(mongoDBService))
+
+  if (!IS_PROD) {
+    app.post('/producers', createProducer(mongoDBService))
+    app.post('/producers/:userId', updateProducer(mongoDBService))
+  }
 }
 
 export default producersRoutesFactory
