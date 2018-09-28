@@ -1,6 +1,6 @@
 import { IS_PROD } from '../../config'
 import { getLocations, getLocation } from './get'
-import { createLocation } from './post'
+import { createLocation, updateLocation } from './post'
 import createMongoDBService from '../../services/mongo-db'
 
 const locationsRoutesFactory = (app, config) => {
@@ -11,6 +11,7 @@ const locationsRoutesFactory = (app, config) => {
 
   if (!IS_PROD) {
     app.post('/locations', createLocation(mongoDBService))
+    app.post('/locations/:locationId', updateLocation(mongoDBService))
   }
 }
 

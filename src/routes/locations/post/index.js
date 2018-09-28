@@ -1,1 +1,1 @@
-export { createLocation } from './location'
+export { createLocation, updateLocation } from './location'

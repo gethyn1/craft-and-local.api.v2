@@ -40,6 +40,9 @@ const createMongoDBService = () => {
     createLocation(location) {
       return locations.create(Location, location)
     },
+    updateLocation(locationId, location) {
+      return locations.update(Location, locationId, location)
+    },
   }
 }
 
