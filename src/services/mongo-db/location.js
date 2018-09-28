@@ -1,12 +1,16 @@
+import { pick } from 'ramda'
+
+const pickRequiredKeys = pick(['location', 'categories', '_id', 'producer', 'alias'])
+
 export const getLocation = (Location, id) =>
   new Promise((resolve, reject) => {
     Location
       .findById(id)
       .populate('categories')
       .populate('producer')
-      .exec((err, results) => {
+      .exec((err, result) => {
         if (err) {
-          reject({
+          return reject({
             statusCode: 400,
             status: 'error',
             data: {
@@ -15,8 +19,8 @@ export const getLocation = (Location, id) =>
           })
         }
 
-        if (!results) {
-          reject({
+        if (!result) {
+          return reject({
             statusCode: 404,
             status: 'not found',
             data: {
@@ -29,7 +33,7 @@ export const getLocation = (Location, id) =>
           statusCode: 200,
           status: 'success',
           data: {
-            location: results,
+            location: pickRequiredKeys(result),
           },
         })
       })

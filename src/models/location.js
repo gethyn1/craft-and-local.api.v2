@@ -26,6 +26,9 @@ const LocationSchema = Schema({
   contact_telephone: {
     type: String,
   },
+  alias: {
+    type: String,
+  },
 })
 
 export default mongoose.model('Location', LocationSchema)
