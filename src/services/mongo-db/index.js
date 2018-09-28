@@ -9,7 +9,7 @@ import {
 } from './producers'
 
 import { getCategories } from './categories'
-import { getLocations, getLocation } from './locations'
+import * as locations from './locations'
 
 const createMongoDBService = () => {
   return {
@@ -32,11 +32,14 @@ const createMongoDBService = () => {
       return getCategories(Category)
     },
     getLocations(query, limit) {
-      return getLocations(Location, query, limit)
+      return locations.getLocations(Location, query, limit)
     },
     getLocation(_id) {
-      return getLocation(Location, _id)
-    }
+      return locations.getLocation(Location, _id)
+    },
+    createLocation(location) {
+      return locations.create(Location, location)
+    },
   }
 }
 
