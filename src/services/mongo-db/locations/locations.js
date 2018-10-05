@@ -41,6 +41,11 @@ export const getLocations = (Location, query, limit = 30, maxLimit = 50) =>
       filters.categories = query.categories
     }
 
+    if (query.hasOwnProperty('producer')) {
+      // Find location by producer.
+      filters.producer = query.producer
+    }
+
     Location
       .find(filters)
       .limit(numberOfLocationsToGet)

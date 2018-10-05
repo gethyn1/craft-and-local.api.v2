@@ -1,6 +1,13 @@
 import { pick } from 'ramda'
 
-const pickRequiredKeys = pick(['location', 'categories', '_id', 'producer', 'alias'])
+const pickRequiredKeys = pick([
+  'location',
+  'categories',
+  '_id',
+  'producer',
+  'alias',
+  'address'
+])
 
 export const getLocation = (Location, id) =>
   new Promise((resolve, reject) => {
