@@ -6,7 +6,11 @@ const pickRequiredKeys = pick([
   '_id',
   'producer',
   'alias',
-  'address'
+  'address',
+  'instagram_handle',
+  'twitter_handle',
+  'contact_email',
+  'contact_telephone',
 ])
 
 export const getLocation = (Location, id) =>

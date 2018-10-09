@@ -18,6 +18,14 @@ const LocationSchema = Schema({
   address: {
     type: String,
   },
+  instagram_handle: {
+    type: String,
+    default: '',
+  },
+  twitter_handle: {
+    type: String,
+    default: '',
+  },
   contact_email: {
     type: String,
     trim: true,
