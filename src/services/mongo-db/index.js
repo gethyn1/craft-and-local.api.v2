@@ -1,10 +1,15 @@
-import { Producer, Category } from './register-models'
-import { getProducers } from './producers'
-import { getProducer } from './producer'
-import { createProducer } from './create-producer'
-import { updateProducer } from './update-producer'
-import { updateProducerAvatar } from './update-producer-avatar'
+import { Producer, Category, Location } from './register-models'
+
+import {
+  getProducers,
+  getProducer,
+  createProducer,
+  updateProducer,
+  updateProducerAvatar,
+} from './producers'
+
 import { getCategories } from './categories'
+import * as locations from './locations'
 
 const createMongoDBService = () => {
   return {
@@ -25,7 +30,19 @@ const createMongoDBService = () => {
     },
     getCategories() {
       return getCategories(Category)
-    }
+    },
+    getLocations(query, limit) {
+      return locations.getLocations(Location, query, limit)
+    },
+    getLocation(_id) {
+      return locations.getLocation(Location, _id)
+    },
+    createLocation(location) {
+      return locations.create(Location, location)
+    },
+    updateLocation(locationId, location) {
+      return locations.update(Location, locationId, location)
+    },
   }
 }
 
