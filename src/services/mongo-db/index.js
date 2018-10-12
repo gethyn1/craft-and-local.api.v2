@@ -1,4 +1,4 @@
-import { Producer, Category, Location } from './register-models'
+import { Producer, Category, Location, User } from './register-models'
 
 import {
   getProducers,
@@ -10,6 +10,7 @@ import {
 
 import { getCategories } from './categories'
 import * as locations from './locations'
+import * as users from './users'
 
 const createMongoDBService = () => {
   return {
@@ -42,6 +43,9 @@ const createMongoDBService = () => {
     },
     updateLocation(locationId, location) {
       return locations.update(Location, locationId, location)
+    },
+    createUser(user) {
+      return users.create(User, user)
     },
   }
 }

@@ -37,6 +37,7 @@
     "rimraf": "^2.6.1"
   },
   "dependencies": {
+    "argon2": "^0.19.3",
     "aws-sdk": "^2.315.0",
     "babel-polyfill": "^6.23.0",
     "bcrypt-nodejs": "^0.0.3",

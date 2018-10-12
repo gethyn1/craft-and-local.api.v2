@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
-import bcrypt from 'bcrypt-nodejs'
+import argon2 from 'argon2'
 
 const UserSchema = Schema({
   email: {
@@ -29,28 +29,25 @@ const UserSchema = Schema({
 // Hash password before saving to database
 UserSchema.pre('save', function(next) {
   const user = this
-  const SALT_FACTOR = 5
 
   if (!user.isModified('password')) return next()
 
-  bcrypt.genSalt(SALT_FACTOR, (err, salt) => {
-    if (err) return next(err)
-
-    bcrypt.hash(user.password, salt, null, (err, hash) => {
-      if (err) return next(err)
-      user.password = hash
-      next()
-    })
-  })
+  argon2.hash(user.password).then(hash => {
+    user.password = hash
+    next()
+  }).catch(err => next(err))
 })
 
 // Compare database password hash with user submitted password
 UserSchema.methods.comparePassword = function(candidatePassword) {
   return new Promise((resolve, reject) => {
-    bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-      if (err) reject(err)
-      resolve(isMatch)
-    })
+    argon2.verify(this.password, candidatePassword).then(match => {
+      if (match) {
+        resolve(match)
+      } else {
+        reject(false)
+      }
+    }).catch(err => reject(err))
   })
 }
 
