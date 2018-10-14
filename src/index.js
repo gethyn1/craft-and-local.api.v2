@@ -26,6 +26,7 @@ const http = Server(app)
 // Express security with helmet module
 app.use(helmet())
 
+app.set('jwtTokenSecret', JWT_SECRET)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 

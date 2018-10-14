@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken'
 import { Producer, Category, Location, User } from './register-models'
 
 import {
@@ -43,6 +44,9 @@ const createMongoDBService = () => {
     },
     updateLocation(locationId, location) {
       return locations.update(Location, locationId, location)
+    },
+    authenticateUser(jwtSecret, email, password) {
+      return users.authenticate(User, jwt, jwtSecret, email, password)
     },
     createUser(user) {
       return users.create(User, user)

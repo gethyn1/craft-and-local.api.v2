@@ -45,7 +45,7 @@ UserSchema.methods.comparePassword = function(candidatePassword) {
       if (match) {
         resolve(match)
       } else {
-        reject(false)
+        reject(match)
       }
     }).catch(err => reject(err))
   })

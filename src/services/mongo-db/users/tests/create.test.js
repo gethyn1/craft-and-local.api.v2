@@ -14,7 +14,7 @@ describe('Mongo DB service > POST > user', () => {
     save.mockClear()
   })
 
-  it('should save the user with the correct data', () => {
+  it('should save the user', () => {
     create(User, { email, password })
     expect(save.mock.calls.length).toBe(1)
   })
