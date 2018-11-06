@@ -27,7 +27,7 @@ export const authenticate = (User, jwtService, jwtSecret, email, password) =>
             }
 
             const token = jwtService.sign(user.toJSON(), jwtSecret, {
-              expiresIn : 60 * 60 * 24, // expires in 24 hours
+              expiresIn : 60 * 60 * 12, // expires in 12 hours
             })
 
             resolve({
