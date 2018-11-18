@@ -15,6 +15,7 @@ import producerRoutes from './routes/producers'
 import categoryRoutes from './routes/categories'
 import avatarsRoutes from './routes/avatars'
 import locationRoutes from './routes/locations'
+import userRoutes from './routes/users'
 // import robotsTxtRoute from '../routes/robots'
 
 const { WEB_PORT, IS_PROD, JWT_SECRET, CORS_WEB_APP_ORIGIN, DEBUG } = config
@@ -25,6 +26,7 @@ const http = Server(app)
 // Express security with helmet module
 app.use(helmet())
 
+app.set('jwtTokenSecret', JWT_SECRET)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -58,6 +60,7 @@ producerRoutes(app, config)
 categoryRoutes(app, config)
 avatarsRoutes(app, config)
 locationRoutes(app, config)
+userRoutes(app, config)
 
 http.listen(WEB_PORT, () => {
   // eslint-disable-next-line no-console

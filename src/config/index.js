@@ -9,4 +9,5 @@ export default {
   S3_SECRET: process.env.S3_SECRET,
   S3_BUCKET: process.env.S3_BUCKET,
   S3_REGION: process.env.S3_REGION,
+  JWT_SECRET: process.env.JWT_SECRET,
 }
