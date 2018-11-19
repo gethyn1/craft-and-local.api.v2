@@ -1,6 +1,6 @@
 export const uploadAvatar = (mongoDBService, s3Service) => (req, res) => {
   s3Service.upload(req.file)
-    .then(upload => mongoDBService.updateProducerAvatar(upload, req.file, req.body.user_id))
+    .then(upload => mongoDBService.updateProducerAvatar(upload, req.file, req.body.userId))
     .then(data => {
       const { previousFileKey } = data.data
 

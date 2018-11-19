@@ -6,7 +6,7 @@ const ProducerSchema = Schema({
     lowercase: true,
     trim: true,
   },
-  user_id: {
+  userId: {
     type: String,
     unique: true,
     lowercase: true,
