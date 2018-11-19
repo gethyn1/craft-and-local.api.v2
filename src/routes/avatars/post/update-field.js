@@ -4,7 +4,7 @@ export const updateField = (Producer, file, userId) =>
     uploadImage(file)
       .then((data) => {
         // Find producer by userId
-        Producer.findOne({ user_id: userId }, (err, producer) => {
+        Producer.findOne({ userId: userId }, (err, producer) => {
           if(err) {
             reject({
               status: 'error',

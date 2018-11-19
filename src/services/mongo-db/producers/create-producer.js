@@ -6,6 +6,7 @@ export const createProducer = (Producer, producer) =>
 
     newProducer.save((err, producer) => {
       if (err) {
+        console.log(err)
         reject({
           statusCode: 400,
           status: 'error',

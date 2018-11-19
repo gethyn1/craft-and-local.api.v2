@@ -1,8 +1,8 @@
 import { setProducerFields } from './set-producer-fields'
 
-export const updateProducer = (Producer, user_id, producer) =>
+export const updateProducer = (Producer, userId, producer) =>
   new Promise((resolve, reject) => {
-    if (!user_id || user_id === 'undefined') {
+    if (!userId || userId === 'undefined') {
       return reject({
         statusCode: 400,
         status: 'error',
@@ -26,7 +26,7 @@ export const updateProducer = (Producer, user_id, producer) =>
 
     Producer
       .findOneAndUpdate(
-        { user_id },
+        { userId },
         setProducerFields(producer),
         { new: true },
         (err, data) => {

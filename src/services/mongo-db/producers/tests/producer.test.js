@@ -15,8 +15,8 @@ describe('Mongo DB service > GET > producer', () => {
   })
 
   it('should get producer by user ID', () => {
-    getProducer(Producer, 'user_id')
-    expect(findOne.mock.calls[0][0]).toEqual({ user_id: 'user_id' })
+    getProducer(Producer, 'userId')
+    expect(findOne.mock.calls[0][0]).toEqual({ userId: 'userId' })
   })
 
   it('should populate the category field', () => {

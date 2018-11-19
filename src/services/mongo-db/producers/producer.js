@@ -1,7 +1,7 @@
-export const getProducer = (Producer, user_id) =>
+export const getProducer = (Producer, userId) =>
   new Promise((resolve, reject) => {
     Producer
-      .findOne({ user_id })
+      .findOne({ userId })
       .populate('categories')
       .populate('locality')
       .exec((err, results) => {

@@ -11,7 +11,7 @@ export const updateProducerAvatar = (Producer, upload, file, userId) =>
     }
 
     // Find producer by userId
-    Producer.findOne({ user_id: userId }, (err, producer) => {
+    Producer.findOne({ userId: userId }, (err, producer) => {
       if (err) {
         return reject({
           statusCode: 400,
