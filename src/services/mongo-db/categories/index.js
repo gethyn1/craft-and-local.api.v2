@@ -1,1 +1,1 @@
-export { getCategories } from './categories'
+export { getCategories, createCategory } from './categories'
