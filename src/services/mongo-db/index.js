@@ -9,7 +9,7 @@ import {
   updateProducerAvatar,
 } from './producers'
 
-import { getCategories } from './categories'
+import { getCategories, createCategory } from './categories'
 import * as locations from './locations'
 import * as users from './users'
 
@@ -32,6 +32,9 @@ const createMongoDBService = () => {
     },
     getCategories() {
       return getCategories(Category)
+    },
+    createCategory(title, slug) {
+      return createCategory(Category, title, slug)
     },
     getLocations(query, limit) {
       return locations.getLocations(Location, query, limit)
